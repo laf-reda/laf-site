@@ -577,6 +577,9 @@ button {
 /* ==========================================================================
    MOBILE MENU OVERLAY & RESPONSIVE ITEMS
    ========================================================================== */
+/* ==========================================================================
+   MOBILE MENU OVERLAY (REFINED SPACING)
+   ========================================================================== */
 .mobile-menu {
   display: none;
   position: fixed;
@@ -586,11 +589,13 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem; /* Decreased default mobile gap slightly to prevent vertical overflow */
+  /* Reduced gap significantly for a unified typographic lockup */
+  gap: 1rem;
+  /* Top padding acts as a buffer for your static navigation header height */
+  padding: 5rem 2rem 2rem 2rem;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
-  padding: 2rem;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobile-menu.open {
@@ -599,37 +604,35 @@ button {
   pointer-events: all;
 }
 
-/* Target the navigation links inside the mobile menu */
 .mobile-menu a {
   font-family: var(--display);
-  /* clamp() dynamically adjusts between 1.75rem on small screens and 2.5rem on larger ones */
-  font-size: clamp(1.75rem, 7vw, 2.5rem);
+  /* Scaled down text settings to feel more intentional, clean, and premium */
+  font-size: clamp(1.4rem, 5vw, 1.85rem);
   color: var(--text);
   text-decoration: none;
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   text-align: center;
-  width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.15rem 0;
+  width: auto; /* inline tracking bounding box */
 }
 
-/* Elegant feedback loop when items are pressed or tapped */
 .mobile-menu a:hover,
 .mobile-menu a:active {
   color: var(--gold);
 }
 
-/* Extra safety rule for short screen devices or landscape viewports */
-@media (max-height: 600px) {
+/* Fallback optimization for super compressed screens */
+@media (max-height: 550px) {
   .mobile-menu {
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.65rem;
   }
   .mobile-menu a {
-    font-size: 1.5rem;
-    padding: 0.25rem 0;
+    font-size: 1.25rem;
   }
 }
+
+
 .mobile-menu__contact { margin-top: 1rem; text-align: center; }
 .mobile-menu__contact a {
   font-family: var(--label);
@@ -1500,12 +1503,12 @@ button {
 .contact__social-item {
   display: flex;
   align-items: center;
-  padding: 1.1rem 1.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--gold-border);
-  border-radius: 8px;
+  padding: 0.85rem 1.25rem; /* Reduced padding for a tighter, premium feel */
+  background: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px; /* Crisp, architectural corners */
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.3s var(--ease);
   position: relative;
   width: 100%;
 }
@@ -1523,32 +1526,30 @@ button {
 .contact__social-item:hover::before { opacity: 1; }
 
 .contact__social-item:hover {
+  background: var(--bg-card);
   border-color: var(--gold);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.12);
+  transform: translateX(6px); /* Micro-interaction: subtle shift */
 }
 
 .contact__social-icon {
   flex-shrink: 0;
   margin-right: 1.25rem;
-  color: var(--text-dim);
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
+  color: var(--gold);
+  font-size: 1rem;
+  transition: transform 0.3s ease;
 }
 
 .contact__social-item:hover .contact__social-icon {
-  transform: scale(1.1) rotate(5deg);
-  color: var(--gold);
+  transform: scale(1.1);
 }
 
 .contact__social-value {
   font-family: var(--label);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.25em;
   color: var(--text);
   text-transform: uppercase;
-  z-index: 1;
 }
 
 /* Tooltips */
@@ -1586,17 +1587,12 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.8rem 1.1rem;
-  background: var(--bg-surface);
-  border: 1px dashed var(--gold-border);
-  border-radius: 6px;
-  font-size: 0.65rem;
+  padding: 0.8rem 0;
+  font-size: 0.6rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   color: var(--text-dim);
   text-transform: uppercase;
-  transition: all 0.25s ease;
-  align-self: flex-start;
 }
 
 .contact__response-item:hover {
@@ -1606,9 +1602,8 @@ button {
 }
 
 .contact__response-icon {
-  color: var(--gold-deep);
-  opacity: 0.7;
-  transition: all 0.3s ease;
+  color: var(--gold);
+  opacity: 0.8;
 }
 
 .contact__response-item:hover .contact__response-icon {
