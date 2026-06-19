@@ -13,9 +13,9 @@ function App() {
     <div className="app">
       <Navbar />
       <Hero />
+      <Fleet />
       <Destinations />
       <Events />
-      <Fleet />
       <Stats />
       <Nightlife />
       <Jets />
