@@ -19,7 +19,7 @@ export function Hero() {
       <div
         className={`hero__bg${loaded ? " loaded" : ""}`}
         style={{
-          backgroundImage: "url('../assets/reda-broker.jpg')",
+          backgroundImage: "url('/assets/reda-broker.jpg')",
         }}
         role="img"
         aria-label="Luxury superyacht at sea"
