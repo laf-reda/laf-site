@@ -31,11 +31,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Copy index.html and assets to dist
-        run: |
-          cp index.html dist/
-          cp -r assets dist/
-
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
