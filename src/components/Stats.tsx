@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { useInView } from "../hooks/useInView";
 
 const stats = [
@@ -14,19 +15,15 @@ export function Stats() {
     <div className="stats" ref={ref as React.RefObject<HTMLDivElement>}>
       <div className={`stats__inner reveal${inView ? " in-view" : ""}`}>
         {stats.map((stat, i) => (
-          <>
-            <div className="stat" key={stat.label}>
+          <Fragment key={stat.label}>
+            <div className="stat">
               <span className="stat__value">{stat.value}</span>
               <span className="stat__label">{stat.label}</span>
             </div>
             {i < stats.length - 1 && (
-              <div
-                className="stats__divider"
-                key={`div-${i}`}
-                aria-hidden="true"
-              />
+              <div className="stats__divider" aria-hidden="true" />
             )}
-          </>
+          </Fragment>
         ))}
       </div>
     </div>

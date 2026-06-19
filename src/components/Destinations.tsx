@@ -260,7 +260,7 @@ export function Destinations() {
               {/* Form Fields */}
               <div className="form-grid">
                 {/* Select Vessel */}
-                <div className="form-field full">
+                <div className="form-field">
                   <label htmlFor="vessel" className="form-label">
                     Select Vessel
                   </label>
@@ -280,7 +280,7 @@ export function Destinations() {
                 </div>
 
                 {/* Trip Type */}
-                <div className="form-field full">
+                <div className="form-field">
                   <label htmlFor="tripType" className="form-label">
                     Trip Type
                   </label>
@@ -299,7 +299,7 @@ export function Destinations() {
                 </div>
 
                 {/* Departure Date */}
-                <div className="form-field full">
+                <div className="form-field">
                   <label htmlFor="departureDate" className="form-label">
                     Departure Date
                   </label>
@@ -313,24 +313,23 @@ export function Destinations() {
                   />
                 </div>
 
-                {/* Return Date (only for extended/corporate tabs) */}
-                {(activeTab === "extended" || activeTab === "corporate") && (
-                  <div className="form-field full">
-                    <label htmlFor="returnDate" className="form-label">
-                      Return Date
-                    </label>
-                    <input
-                      id="returnDate"
-                      name="returnDate"
-                      type="date"
-                      className="form-input"
-                      min={new Date().toISOString().split("T")[0]}
-                    />
-                  </div>
-                )}
+                {/* Return Date */}
+                <div className="form-field">
+                  <label htmlFor="returnDate" className="form-label">
+                    Return Date
+                  </label>
+                  <input
+                    id="returnDate"
+                    name="returnDate"
+                    type="date"
+                    required
+                    className="form-input"
+                    min={new Date().toISOString().split("T")[0]}
+                  />
+                </div>
 
                 {/* Number of Guests */}
-                <div className="form-field full">
+                <div className="form-field">
                   <label htmlFor="guests" className="form-label">
                     Number of Guests
                   </label>
@@ -347,7 +346,7 @@ export function Destinations() {
                 </div>
 
                 {/* Destination / Route */}
-                <div className="form-field full">
+                <div className="form-field">
                   <label htmlFor="route" className="form-label">
                     Destination / Route
                   </label>
