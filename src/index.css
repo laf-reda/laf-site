@@ -685,6 +685,54 @@ button {
   padding: 0.35rem 0.8rem;
 }
 
+/* === Carousel Navigation Arrows === */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--gold);
+  background: rgba(5, 5, 8, 0.7);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--gold-border);
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus {
+  opacity: 1;
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+  outline: none;
+}
+
+.carousel-arrow--left {
+  left: 0.75rem;
+}
+
+.carousel-arrow--right {
+  right: 0.75rem;
+}
+
+/* Show arrows on hover */
+.vessel-card:hover .carousel-arrow {
+  opacity: 1;
+}
+
+/* Ensure badge doesn't overlap arrows */
+.vessel-card__badge {
+  z-index: 5;
+}
+
+.carousel-arrow {
+  z-index: 10;
+}
+
 .vessel-card__body {
   padding: 1.75rem;
   display: flex;
@@ -1383,7 +1431,6 @@ button {
   text-decoration: none;
   transition: all 0.25s ease;
   position: relative;
-  overflow: hidden;
 }
 
 .contact__social-item::before {

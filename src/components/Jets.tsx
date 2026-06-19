@@ -1,3 +1,6 @@
+import bombardier from "../assets/g650er.jpg";
+import fenix from "../assets/fenix.jpg";
+import cesna from "../assets/cesna.jpg";
 import { useInView } from "../hooks/useInView";
 
 interface Jet {
@@ -16,12 +19,12 @@ interface Jet {
 
 const jets: Jet[] = [
   {
-    id: "g650eb",
+    id: "g650er",
     name: "G650ER",
     model: "Gulfstream G650ER",
     type: "Long-Range · 7,000nm Range",
     badge: "Ultra-Long Range",
-    img: "https://images.unsplash.com/photo-1540962351365-974b33e70e2c?auto=format&fit=crop&w=900&q=80",
+    img: bombardier,
     specs: [
       { value: "7,000nm", label: "Range" },
       { value: "19", label: "Passengers" },
@@ -43,7 +46,7 @@ const jets: Jet[] = [
     model: "Bombardier Global 7500",
     type: "Premium · 7,700nm Range",
     badge: "Flagship Experience",
-    img: "https://images.unsplash.com/photo-1569629743817-70d8b6e054d2?auto=format&fit=crop&w=900&q=80",
+    img: fenix,
     specs: [
       { value: "7,700nm", label: "Range" },
       { value: "19", label: "Passengers" },
@@ -65,7 +68,7 @@ const jets: Jet[] = [
     model: "Cessna Citation Longitude",
     type: "Mid-Size · 3,710nm Range",
     badge: "Efficient & Comfortable",
-    img: "https://images.unsplash.com/photo-1583267724394-7e1d66c21b0e?auto=format&fit=crop&w=900&q=80",
+    img: cesna,
     specs: [
       { value: "3,710nm", label: "Range" },
       { value: "12", label: "Passengers" },

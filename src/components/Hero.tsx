@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import redaBroker from "../assets/reda-broker.jpg";
+import { useEffect, useState } from "react";
 
 export function Hero() {
   const [loaded, setLoaded] = useState(false);

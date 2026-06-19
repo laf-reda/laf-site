@@ -54,14 +54,14 @@ export function Contact() {
 
                   {/* Email */}
                   <a
-                    href="mailto:lafhiveda@gmail.com"
+                    href="mailto:laftihreda7@gmail.com"
                     className="contact__social-item"
-                    data-tooltip="Email: lafhiveda@gmail.com"
+                    data-tooltip="Email: laftihreda7@gmail.com"
                   >
                     <FaEnvelope className="contact__social-icon" />
                     <span className="contact__social-value">Email</span>
                     <span className="contact__social-tooltip" role="tooltip">
-                      lafhiveda@gmail.com
+                      laftihreda7@gmail.com
                     </span>
                   </a>
 
@@ -80,14 +80,14 @@ export function Contact() {
 
                   {/* Instagram */}
                   <a
-                    href="https://instagram.com/laf_725"
+                    href="https://instagram.com/l.a.f_725"
                     className="contact__social-item"
-                    data-tooltip="Instagram: @laf_725"
+                    data-tooltip="Instagram: @l.a.f_725"
                   >
                     <FaInstagram className="contact__social-icon" />
                     <span className="contact__social-value">Instagram</span>
                     <span className="contact__social-tooltip" role="tooltip">
-                      @laf_725
+                      @l.a.f_725
                     </span>
                   </a>
                 </div>
@@ -119,7 +119,19 @@ export function Contact() {
 
             {/* Right: Contact Form */}
             <div className="contact__form">
-              <form className="contact__form-inner" action="#" method="post">
+              <form
+                className="contact__form-inner"
+                action="https://formsubmit.co/laftihreda7@gmail.com"
+                method="post"
+              >
+                {/* Hidden fields for form handling */}
+                <input type="hidden" name="_captcha" value="false" />
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New Private Enquiry from Website"
+                />
+                <input type="hidden" name="_template" value="table" />
                 <div className="form-grid">
                   <div className="form-field">
                     <label htmlFor="firstName" className="form-label">
