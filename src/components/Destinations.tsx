@@ -151,7 +151,7 @@ export function Destinations() {
       <div className="container">
         {/* Header */}
         <div
-          className="destinations__header"
+          className="grid grid-cols-2 gap-8 items-end mb-[clamp(3rem,6vw,5rem)]"
           ref={headerRef as React.RefObject<HTMLDivElement>}
         >
           <div>
@@ -159,13 +159,13 @@ export function Destinations() {
               Extended Voyages
             </p>
             <h2
-              className={`section-title reveal reveal-delay-1${headerInView ? " in-view" : ""}`}
+              className={`font-display font-light text-[#f0ece4] mb-4 reveal reveal-delay-1${headerInView ? " in-view" : ""}`}
             >
-              New England <em>Coastline</em>
+              New England <em className="italic font-light">Coastline</em>
             </h2>
           </div>
           <p
-            className={`section-subtitle reveal reveal-delay-2${headerInView ? " in-view" : ""}`}
+            className={`font-body text-[clamp(0.95rem,1.5vw,1.1rem)] text-[#6e6e7a] font-light leading-8 max-w-[540px] reveal reveal-delay-2${headerInView ? " in-view" : ""}`}
           >
             Explore the coastline on your terms — weekend escapes, week-long
             cruises, or a custom multi-stop voyage. Every itinerary provisioned
@@ -176,23 +176,24 @@ export function Destinations() {
         {/* Main Content */}
         <div ref={formRef as React.RefObject<HTMLDivElement>}>
           {/* Popular Destinations Section */}
-          <div className="destinations__destinations">
-            <p className="destinations__eyebrow">Popular Destinations</p>
+          <div>
+            <p className="eyebrow">Popular Destinations</p>
 
-            <div className="destinations__tags">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-3">
               {destinations.map((dest) => (
                 <button
                   key={dest}
                   type="button"
-                  className="destination-tag"
+                  className="bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] px-5 py-3.5 font-label text-[0.6rem] font-semibold tracking-[0.2em] uppercase text-[#6e6e7a] transition-all duration-250 flex items-center gap-1 hover:bg-[#13131f] hover:border-[#c9a84c] hover:text-[#f0ece4]"
                   aria-label={`Select ${dest} as destination`}
                 >
+                  <span className="block w-1 h-1 bg-[#c9a84c] rounded-full mr-2"></span>
                   {dest}
                 </button>
               ))}
               <button
                 type="button"
-                className="destination-tag custom"
+                className="bg-[#0f0f1a] border border-dashed border-[#c9a84c] px-5 py-3.5 font-label text-[0.6rem] font-semibold tracking-[0.2em] uppercase text-[#c9a84c] transition-all duration-250 flex items-center gap-1 hover:bg-[#c9a84c] hover:text-[#050508]"
                 aria-label="Select custom route"
               >
                 Custom Route ✦
@@ -200,17 +201,17 @@ export function Destinations() {
             </div>
 
             <div
-              className={`destinations__departure reveal reveal-delay-1${bodyInView ? " in-view" : ""}`}
+              className={`bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] border-l-3 border-l-[#c9a84c] px-8 py-6 flex flex-col gap-1 max-w-[500px] reveal reveal-delay-1${bodyInView ? " in-view" : ""}`}
             >
-              <span className="destinations__departure-label">
+              <span className="font-label text-[0.58rem] font-semibold tracking-[0.3em] text-[#c9a84c] uppercase">
                 Default Departure
               </span>
-              <span className="destinations__departure-name">
+              <span className="font-display text-[1.8rem] font-normal text-[#f0ece4] leading-1">
                 Marina Bay Harbor — Quincy, MA
               </span>
-              <span className="destinations__departure-detail">
-                Dock R &nbsp;·&nbsp; Ample parking at Squantum Park lot
-                &nbsp;·&nbsp; Boston &amp; Encore Casino pickups available on
+              <span className="font-body text-[1.05rem] text-[#6e6e7a] font-light leading-6">
+                Dock R&nbsp;·&nbsp; Ample parking at Squantum Park
+                lot&nbsp;·&nbsp; Boston &amp; Encore Casino pickups available on
                 request
               </span>
             </div>
@@ -258,17 +259,20 @@ export function Destinations() {
               </p>
 
               {/* Form Fields */}
-              <div className="form-grid">
+              <div className="grid grid-cols-1 gap-6">
                 {/* Select Vessel */}
-                <div className="form-field full">
-                  <label htmlFor="vessel" className="form-label">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="vessel"
+                    className="font-label text-[0.58rem] font-semibold tracking-[0.3em] text-[#c9a84c] uppercase"
+                  >
                     Select Vessel
                   </label>
                   <select
                     id="vessel"
                     name="vessel"
                     required
-                    className="form-input"
+                    className="bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] px-5 py-4 font-body text-[1.05rem] text-[#f0ece4] font-normal rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(201,168,76,0.4)] focus:border-[#c9a84c] transition-all duration-200"
                   >
                     <option value="">Choose your vessel...</option>
                     {vessels.map((v) => (
@@ -280,15 +284,18 @@ export function Destinations() {
                 </div>
 
                 {/* Trip Type */}
-                <div className="form-field full">
-                  <label htmlFor="tripType" className="form-label">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="tripType"
+                    className="font-label text-[0.58rem] font-semibold tracking-[0.3em] text-[#c9a84c] uppercase"
+                  >
                     Trip Type
                   </label>
                   <select
                     id="tripType"
                     name="tripType"
                     required
-                    className="form-input"
+                    className="bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] px-5 py-4 font-body text-[1.05rem] text-[#f0ece4] font-normal rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(201,168,76,0.4)] focus:border-[#c9a84c] transition-all duration-200"
                   >
                     <option value="">Select trip type...</option>
                     <option value="day">Day Charter</option>
@@ -299,8 +306,11 @@ export function Destinations() {
                 </div>
 
                 {/* Departure Date */}
-                <div className="form-field full">
-                  <label htmlFor="departureDate" className="form-label">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="departureDate"
+                    className="font-label text-[0.58rem] font-semibold tracking-[0.3em] text-[#c9a84c] uppercase"
+                  >
                     Departure Date
                   </label>
                   <input
@@ -308,30 +318,36 @@ export function Destinations() {
                     name="departureDate"
                     type="date"
                     required
-                    className="form-input"
+                    className="bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] px-5 py-4 font-body text-[1.05rem] text-[#f0ece4] font-normal rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(201,168,76,0.4)] focus:border-[#c9a84c] transition-all duration-200"
                     min={new Date().toISOString().split("T")[0]}
                   />
                 </div>
 
                 {/* Return Date (only for extended/corporate tabs) */}
                 {(activeTab === "extended" || activeTab === "corporate") && (
-                  <div className="form-field full">
-                    <label htmlFor="returnDate" className="form-label">
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="returnDate"
+                      className="font-label text-[0.58rem] font-semibold tracking-[0.3em] text-[#c9a84c] uppercase"
+                    >
                       Return Date
                     </label>
                     <input
                       id="returnDate"
                       name="returnDate"
                       type="date"
-                      className="form-input"
+                      className="bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] px-5 py-4 font-body text-[1.05rem] text-[#f0ece4] font-normal rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(201,168,76,0.4)] focus:border-[#c9a84c] transition-all duration-200"
                       min={new Date().toISOString().split("T")[0]}
                     />
                   </div>
                 )}
 
                 {/* Number of Guests */}
-                <div className="form-field full">
-                  <label htmlFor="guests" className="form-label">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="guests"
+                    className="font-label text-[0.58rem] font-semibold tracking-[0.3em] text-[#c9a84c] uppercase"
+                  >
                     Number of Guests
                   </label>
                   <input
@@ -341,14 +357,17 @@ export function Destinations() {
                     min="1"
                     max="150"
                     required
-                    className="form-input"
+                    className="bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] px-5 py-4 font-body text-[1.05rem] text-[#f0ece4] font-normal rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(201,168,76,0.4)] focus:border-[#c9a84c] transition-all duration-200"
                     placeholder="e.g., 6"
                   />
                 </div>
 
                 {/* Destination / Route */}
-                <div className="form-field full">
-                  <label htmlFor="route" className="form-label">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="route"
+                    className="font-label text-[0.58rem] font-semibold tracking-[0.3em] text-[#c9a84c] uppercase"
+                  >
                     Destination / Route
                   </label>
                   <input
@@ -356,35 +375,41 @@ export function Destinations() {
                     name="route"
                     type="text"
                     required
-                    className="form-input"
+                    className="bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] px-5 py-4 font-body text-[1.05rem] text-[#f0ece4] font-normal rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(201,168,76,0.4)] focus:border-[#c9a84c] transition-all duration-200"
                     placeholder="e.g., Cape Cod → Martha's Vineyard → Nantucket"
                   />
                 </div>
 
                 {/* Add-On Services */}
-                <div className="form-field full">
-                  <label htmlFor="addOns" className="form-label">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="addOns"
+                    className="font-label text-[0.58rem] font-semibold tracking-[0.3em] text-[#c9a84c] uppercase"
+                  >
                     Add-On Services
                   </label>
                   <textarea
                     id="addOns"
                     name="addOns"
                     rows={3}
-                    className="form-input form-textarea"
+                    className="bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] px-5 py-4 font-body text-[1.05rem] text-[#f0ece4] font-normal rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(201,168,76,0.4)] focus:border-[#c9a84c] transition-all duration-200 resize-none"
                     placeholder="Catering, entertainment, special amenities, etc."
                   />
                 </div>
 
                 {/* Special Requests */}
-                <div className="form-field full">
-                  <label htmlFor="specialRequests" className="form-label">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="specialRequests"
+                    className="font-label text-[0.58rem] font-semibold tracking-[0.3em] text-[#c9a84c] uppercase"
+                  >
                     Special Requests
                   </label>
                   <textarea
                     id="specialRequests"
                     name="specialRequests"
                     rows={3}
-                    className="form-input form-textarea"
+                    className="bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] px-5 py-4 font-body text-[1.05rem] text-[#f0ece4] font-normal rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgba(201,168,76,0.4)] focus:border-[#c9a84c] transition-all duration-200 resize-none"
                     placeholder="Dietary requirements, celebration details, preferred ports of call, specific amenities..."
                   />
                 </div>

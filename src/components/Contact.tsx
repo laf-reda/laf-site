@@ -10,7 +10,7 @@ export function Contact() {
       <div className="container">
         {/* Header */}
         <div
-          className="contact__header"
+          className="mb-12 md:mb-16"
           ref={headerRef as React.RefObject<HTMLDivElement>}
         >
           <p className={`eyebrow reveal${headerInView ? " in-view" : ""}`}>

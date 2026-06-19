@@ -95,7 +95,7 @@ export function Jets() {
       <div className="container">
         {/* Header */}
         <div
-          className="jets__header"
+          className="mb-12 md:mb-16"
           ref={headerRef as React.RefObject<HTMLDivElement>}
         >
           <p className={`eyebrow reveal${headerInView ? " in-view" : ""}`}>
@@ -119,7 +119,7 @@ export function Jets() {
 
         {/* Jet Grid */}
         <div
-          className="fleet__grid"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10"
           ref={gridRef as React.RefObject<HTMLDivElement>}
         >
           {jets.map((jet, i) => (
@@ -128,50 +128,71 @@ export function Jets() {
               className={`jet-card reveal reveal-delay-${i as 0 | 1 | 2 | 3}${gridInView ? " in-view" : ""}`}
             >
               {/* Image */}
-              <div className="vessel-card__img-wrap">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <img
                   src={jet.img}
                   alt={`${jet.name} — ${jet.model}`}
                   loading="lazy"
                 />
-                <span className="vessel-card__badge">{jet.badge}</span>
+                <span className="absolute top-4 right-4 font-label text-[0.55rem] font-semibold tracking-widest uppercase bg-[#c9a84c] text-[#050508] px-3 py-1.5">
+                  {jet.badge}
+                </span>
               </div>
 
               {/* Body */}
-              <div className="vessel-card__body">
+              <div className="flex flex-col flex-1 gap-3 py-6 px-6">
                 <div>
-                  <h3 className="vessel-card__name">{jet.name}</h3>
-                  <p className="vessel-card__type">
+                  <h3 className="font-display text-3xl font-light text-[#f0ece4]">
+                    {jet.name}
+                  </h3>
+                  <p className="font-label text-[0.58rem] font-medium tracking-wide text-[#6e6e7a] uppercase mt-0.5">
                     {jet.model} &nbsp;·&nbsp; {jet.type}
                   </p>
                 </div>
 
                 {/* Specs */}
-                <div className="vessel-card__specs">
+                <div className="grid grid-cols-4 gap-2.5 py-3 border-t border-[#13131f] border-b border-[#13131f]">
                   {jet.specs.map((spec) => (
-                    <div className="spec-item" key={spec.label}>
-                      <span className="spec-item__value">{spec.value}</span>
-                      <span className="spec-item__label">{spec.label}</span>
+                    <div className="flex flex-col gap-0.5" key={spec.label}>
+                      <span className="font-body text-[1.05rem] font-medium text-[#f0ece4]">
+                        {spec.value}
+                      </span>
+                      <span className="font-label text-[0.52rem] font-medium tracking-[0.2em] text-[#6e6e7a] uppercase">
+                        {spec.label}
+                      </span>
                     </div>
                   ))}
                 </div>
 
                 {/* Highlights */}
-                <ul className="vessel-card__highlights">
+                <ul className="flex flex-col gap-1">
                   {jet.highlights.map((h) => (
-                    <li key={h}>{h}</li>
+                    <li
+                      key={h}
+                      className="text-[0.85rem] text-[#6e6e7a] font-light flex items-start gap-0.6"
+                    >
+                      <span className="text-[#c9a84c] text-[0.75rem] mt-0.4">
+                        —
+                      </span>
+                      {h}
+                    </li>
                   ))}
                 </ul>
 
                 {/* Footer: price + CTA */}
-                <div className="vessel-card__footer">
-                  <div className="vessel-card__price-wrap">
-                    <span className="vessel-card__price">{jet.price}</span>
-                    <span className="vessel-card__price-note">
+                <div className="flex items-end justify-between gap-2 mt-auto pt-3 border-t border-[#13131f]">
+                  <div className="flex flex-col gap-0.15">
+                    <span className="font-display text-[2.2rem] font-light text-[#c9a84c]">
+                      {jet.price}
+                    </span>
+                    <span className="font-label text-[0.55rem] font-medium tracking-widest text-[#6e6e7a] uppercase">
                       {jet.priceNote}
                     </span>
                   </div>
-                  <a href={`tel:${jet.phone}`} className="vessel-card__inquire">
+                  <a
+                    href={`tel:${jet.phone}`}
+                    className="font-label text-[0.6rem] font-semibold tracking-[0.2em] text-[#c9a84c] relative pb-1 border-b border-[#c9a84c] hover:text-[#dbbe68] hover:border-[#c9a84c]"
+                  >
                     Inquire &rarr;
                   </a>
                 </div>

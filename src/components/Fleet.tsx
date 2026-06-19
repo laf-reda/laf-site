@@ -130,23 +130,23 @@ export function Fleet() {
   };
 
   return (
-    <section id="fleet" className="section section--alt">
+    <section id="fleet" className="section bg-[#080810]">
       <div className="container">
         {/* Header */}
         <div
-          className="fleet__header"
+          className="fleet__header mb-12"
           ref={headerRef as React.RefObject<HTMLDivElement>}
         >
           <p className={`eyebrow reveal${headerInView ? " in-view" : ""}`}>
             Charter Fleet
           </p>
           <h2
-            className={`section-title reveal reveal-delay-1${headerInView ? " in-view" : ""}`}
+            className={`font-display font-light text-[#f0ece4] mb-4 reveal reveal-delay-1${headerInView ? " in-view" : ""}`}
           >
-            Hand-Selected <em>Superyachts</em>
+            Hand-Selected <em className="italic font-light">Superyachts</em>
           </h2>
           <p
-            className={`section-subtitle reveal reveal-delay-2${headerInView ? " in-view" : ""}`}
+            className={`font-body text-[clamp(0.95rem,1.5vw,1.1rem)] text-[#6e6e7a] font-light leading-8 max-w-[540px] reveal reveal-delay-2${headerInView ? " in-view" : ""}`}
           >
             Every vessel is crewed, provisioned, and prepared to your exact
             specification. Departure from Marina Bay Harbor, Quincy MA — or
@@ -156,33 +156,36 @@ export function Fleet() {
 
         {/* Grid */}
         <div
-          className="fleet__grid"
+          className="grid grid-cols-3 gap-6"
           ref={gridRef as React.RefObject<HTMLDivElement>}
         >
           {vessels.map((vessel, index) => (
             <article
               key={vessel.id}
-              className={`vessel-card reveal reveal-delay-${index as 0 | 1 | 2 | 3}${gridInView ? " in-view" : ""}`}
+              className={`bg-[#0f0f1a] border border-[rgba(201,168,76,0.22)] flex flex-col transition-all duration-300 overflow-hidden reveal reveal-delay-${index + 1}${gridInView ? " in-view" : ""}`}
             >
               {/* Image */}
-              <div className="vessel-card__img-wrap">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <img
                   src={vessel.images[imageIndices[vessel.id]]}
                   alt={`${vessel.name} — ${vessel.model}`}
                   loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-600 ease-custom brightness-[0.85] hover:brightness-[0.95] hover:scale-104"
                 />
-                <span className="vessel-card__badge">{vessel.badge}</span>
+                <span className="absolute top-4 right-4 font-label text-[0.55rem] font-semibold tracking-[0.25em] uppercase text-[#050508] bg-[#c9a84c] px-3 py-1.5 z-10">
+                  {vessel.badge}
+                </span>
 
                 {/* Navigation Arrows */}
                 <button
-                  className="carousel-arrow carousel-arrow--left"
+                  className="absolute top-1/2 -translate-y-1/2 left-3 text-[1.5rem] text-[#c9a84c] bg-[rgba(5,5,8,0.7)] p-3 border border-[rgba(201,168,76,0.22)] rounded-lg opacity-0 transition-all duration-300 hover:opacity-100 hover:bg-[#c9a84c] hover:text-[#050508] hover:border-[#c9a84c] focus:outline-none z-20"
                   onClick={() => prevImage(vessel.id)}
                   aria-label={`Previous image of ${vessel.name}`}
                 >
                   &larr;
                 </button>
                 <button
-                  className="carousel-arrow carousel-arrow--right"
+                  className="absolute top-1/2 -translate-y-1/2 right-3 text-[1.5rem] text-[#c9a84c] bg-[rgba(5,5,8,0.7)] p-3 border border-[rgba(201,168,76,0.22)] rounded-lg opacity-0 transition-all duration-300 hover:opacity-100 hover:bg-[#c9a84c] hover:text-[#050508] hover:border-[#c9a84c] focus:outline-none z-20"
                   onClick={() => nextImage(vessel.id)}
                   aria-label={`Next image of ${vessel.name}`}
                 >
@@ -191,42 +194,55 @@ export function Fleet() {
               </div>
 
               {/* Body */}
-              <div className="vessel-card__body">
+              <div className="flex-1 flex flex-col gap-4 p-7">
                 <div>
-                  <h3 className="vessel-card__name">{vessel.name}</h3>
-                  <p className="vessel-card__type">
-                    {vessel.model} &nbsp;·&nbsp; {vessel.type}
+                  <h3 className="font-display text-[1.9rem] font-normal text-[#f0ece4] leading-1.1">
+                    {vessel.name}
+                  </h3>
+                  <p className="font-label text-[0.58rem] font-medium tracking-[0.25em] text-[#6e6e7a] uppercase mt-0.5">
+                    {vessel.model} · {vessel.type}
                   </p>
                 </div>
 
                 {/* Specs */}
-                <div className="vessel-card__specs">
+                <div className="grid grid-cols-4 gap-3 pt-4 pb-4 border-t border-[#13131f] border-b border-[#13131f]">
                   {vessel.specs.map((spec) => (
-                    <div className="spec-item" key={spec.label}>
-                      <span className="spec-item__value">{spec.value}</span>
-                      <span className="spec-item__label">{spec.label}</span>
+                    <div className="flex flex-col gap-0.5" key={spec.label}>
+                      <span className="font-body text-[1.05rem] font-medium text-[#f0ece4] leading-1">
+                        {spec.value}
+                      </span>
+                      <span className="font-label text-[0.52rem] font-medium tracking-[0.2em] text-[#6e6e7a] uppercase">
+                        {spec.label}
+                      </span>
                     </div>
                   ))}
                 </div>
 
                 {/* Highlights */}
-                <ul className="vessel-card__highlights">
+                <ul className="list-none flex flex-col gap-1">
                   {vessel.highlights.map((h) => (
-                    <li key={h}>{h}</li>
+                    <li className="text-[0.85rem] text-[#6e6e7a] font-light flex items-start gap-0.6">
+                      <span className="text-[#c9a84c] text-[0.75rem] mt-0.4">
+                        —
+                      </span>
+                      {h}
+                    </li>
                   ))}
                 </ul>
 
                 {/* Footer: price + CTA */}
-                <div className="vessel-card__footer">
-                  <div className="vessel-card__price-wrap">
-                    <span className="vessel-card__price">{vessel.price}</span>
-                    <span className="vessel-card__price-note">
+                <div className="flex items-end justify-between gap-4 mt-auto pt-4 border-t border-[#13131f]">
+                  <div className="flex flex-col gap-0.15">
+                    <span className="font-display text-[2.2rem] font-normal text-[#c9a84c] leading-1">
+                      {vessel.price}
+                    </span>
+                    <span className="font-label text-[0.55rem] font-medium tracking-[0.15em] text-[#6e6e7a] uppercase">
                       {vessel.priceNote}
                     </span>
                   </div>
                   <a
                     href={`tel:${vessel.phone}`}
-                    className="vessel-card__inquire"
+                    className="font-label text-[0.6rem] font-semibold tracking-[0.2em] uppercase text-[#c9a84c] pb-1.5 border-b border-[rgba(201,168,76,0.22)] transition-all duration-200 hover:text-[#dbbe68] hover:border-[#c9a84c] whitespace-nowrap"
                   >
                     Inquire &rarr;
                   </a>
