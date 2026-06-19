@@ -11,7 +11,6 @@ import champagneLady1 from "../assets/champagne-lady-1.jpg";
 import champagneLady2 from "../assets/champagne-lady-2.jpg";
 import champagneLady3 from "../assets/champagne-lady-3.jpg";
 
-// Vessel data
 interface Vessel {
   id: string;
   name: string;
@@ -115,11 +114,6 @@ export function Destinations() {
   const { ref: headerRef, inView: headerInView } = useInView(0.2);
   const { ref: formRef, inView: bodyInView } = useInView(0.15);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Form submission handled by form action
-  };
-
   const getTabLabel = (tab: TabType) => {
     switch (tab) {
       case "weekend":
@@ -149,7 +143,6 @@ export function Destinations() {
   return (
     <section id="destinations" className="section">
       <div className="container">
-        {/* Header */}
         <div
           className="destinations__header"
           ref={headerRef as React.RefObject<HTMLDivElement>}
@@ -173,12 +166,9 @@ export function Destinations() {
           </p>
         </div>
 
-        {/* Main Content */}
         <div ref={formRef as React.RefObject<HTMLDivElement>}>
-          {/* Popular Destinations Section */}
           <div className="destinations__destinations">
             <p className="destinations__eyebrow">Popular Destinations</p>
-
             <div className="destinations__tags">
               {destinations.map((dest) => (
                 <button
@@ -198,7 +188,6 @@ export function Destinations() {
                 Custom Route ✦
               </button>
             </div>
-
             <div
               className={`destinations__departure reveal reveal-delay-1${bodyInView ? " in-view" : ""}`}
             >
@@ -209,22 +198,18 @@ export function Destinations() {
                 Marina Bay Harbor — Quincy, MA
               </span>
               <span className="destinations__departure-detail">
-                Dock R &nbsp;·&nbsp; Ample parking at Squantum Park lot
-                &nbsp;·&nbsp; Boston &amp; Encore Casino pickups available on
-                request
+                Dock R · Ample parking at Squantum Park lot · Boston & Encore
+                Casino pickups available on request
               </span>
             </div>
           </div>
 
-          {/* Booking Form Section */}
           <div className="destinations__form">
             <form
               className="destinations__form-inner"
-              onSubmit={handleSubmit}
               action="https://formsubmit.co/laftihreda7@gmail.com"
-              method="post"
+              method="POST"
             >
-              {/* Hidden fields for form handling */}
               <input type="hidden" name="_captcha" value="false" />
               <input
                 type="hidden"
@@ -232,8 +217,13 @@ export function Destinations() {
                 value="New Vacation Enquiry from Website"
               />
               <input type="hidden" name="_template" value="table" />
+              <input
+                type="hidden"
+                name="_next"
+                value="https://www.lafempire.com/"
+              />
+              <input type="text" name="_honey" style={{ display: "none" }} />
 
-              {/* Tabs */}
               <div className="destinations__tabs">
                 {(
                   ["weekend", "week", "extended", "corporate"] as TabType[]
@@ -241,9 +231,7 @@ export function Destinations() {
                   <button
                     key={tab}
                     type="button"
-                    className={`destinations__tab${
-                      activeTab === tab ? " destinations__tab--active" : ""
-                    }`}
+                    className={`destinations__tab${activeTab === tab ? " destinations__tab--active" : ""}`}
                     onClick={() => setActiveTab(tab)}
                     aria-selected={activeTab === tab}
                     role="tab"
@@ -257,9 +245,7 @@ export function Destinations() {
                 {getTabDescription(activeTab)}
               </p>
 
-              {/* Form Fields */}
               <div className="form-grid">
-                {/* Select Vessel */}
                 <div className="form-field">
                   <label htmlFor="vessel" className="form-label">
                     Select Vessel
@@ -278,8 +264,6 @@ export function Destinations() {
                     ))}
                   </select>
                 </div>
-
-                {/* Trip Type */}
                 <div className="form-field">
                   <label htmlFor="tripType" className="form-label">
                     Trip Type
@@ -297,8 +281,6 @@ export function Destinations() {
                     <option value="custom">Custom Itinerary</option>
                   </select>
                 </div>
-
-                {/* Departure Date */}
                 <div className="form-field">
                   <label htmlFor="departureDate" className="form-label">
                     Departure Date
@@ -309,11 +291,8 @@ export function Destinations() {
                     type="date"
                     required
                     className="form-input"
-                    min={new Date().toISOString().split("T")[0]}
                   />
                 </div>
-
-                {/* Return Date */}
                 <div className="form-field">
                   <label htmlFor="returnDate" className="form-label">
                     Return Date
@@ -324,11 +303,8 @@ export function Destinations() {
                     type="date"
                     required
                     className="form-input"
-                    min={new Date().toISOString().split("T")[0]}
                   />
                 </div>
-
-                {/* Number of Guests */}
                 <div className="form-field">
                   <label htmlFor="guests" className="form-label">
                     Number of Guests
@@ -344,8 +320,6 @@ export function Destinations() {
                     placeholder="e.g., 6"
                   />
                 </div>
-
-                {/* Destination / Route */}
                 <div className="form-field">
                   <label htmlFor="route" className="form-label">
                     Destination / Route
@@ -356,11 +330,9 @@ export function Destinations() {
                     type="text"
                     required
                     className="form-input"
-                    placeholder="e.g., Cape Cod → Martha's Vineyard → Nantucket"
+                    placeholder="e.g., Cape Cod → Nantucket"
                   />
                 </div>
-
-                {/* Add-On Services */}
                 <div className="form-field full">
                   <label htmlFor="addOns" className="form-label">
                     Add-On Services
@@ -370,11 +342,9 @@ export function Destinations() {
                     name="addOns"
                     rows={3}
                     className="form-input form-textarea"
-                    placeholder="Catering, entertainment, special amenities, etc."
+                    placeholder="Catering, entertainment, etc."
                   />
                 </div>
-
-                {/* Special Requests */}
                 <div className="form-field full">
                   <label htmlFor="specialRequests" className="form-label">
                     Special Requests
@@ -384,12 +354,10 @@ export function Destinations() {
                     name="specialRequests"
                     rows={3}
                     className="form-input form-textarea"
-                    placeholder="Dietary requirements, celebration details, preferred ports of call, specific amenities..."
+                    placeholder="Dietary requirements, etc."
                   />
                 </div>
               </div>
-
-              {/* Submit Button */}
               <button type="submit" className="btn btn--gold btn--full">
                 Send Vacation Enquiry
               </button>

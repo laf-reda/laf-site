@@ -132,6 +132,12 @@ export function Contact() {
                   value="New Private Enquiry from Website"
                 />
                 <input type="hidden" name="_template" value="table" />
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://www.lafempire.com/"
+                />
+                <input type="hidden" name="_template" value="table" />
                 <div className="form-grid">
                   <div className="form-field">
                     <label htmlFor="firstName" className="form-label">
