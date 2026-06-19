@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import redaBroker from "../assets/reda-broker.jpg";
 
 export function Hero() {
   const [loaded, setLoaded] = useState(false);
@@ -19,7 +20,7 @@ export function Hero() {
       <div
         className={`hero__bg${loaded ? " loaded" : ""}`}
         style={{
-          backgroundImage: "url('./assets/reda-broker.jpg')",
+          backgroundImage: `url(${redaBroker})`,
         }}
         role="img"
         aria-label="Luxury superyacht at sea"
