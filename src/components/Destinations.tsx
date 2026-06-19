@@ -391,7 +391,7 @@ export function Destinations() {
 
               {/* Submit Button */}
               <button type="submit" className="btn btn--gold btn--full">
-                Send Vacation Enquiry — L.A.F Empire →
+                Send Vacation Enquiry
               </button>
             </form>
           </div>
